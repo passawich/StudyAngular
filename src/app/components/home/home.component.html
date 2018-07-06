@@ -1,0 +1,98 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body> 
+<div Align=right>
+  <label ><b>id</b>:{{id}}  </label>&nbsp;
+<button class='btn btn-danger' (click)="logOut()"><i class="material-icons">power_settings_new</i></button>
+</div>
+
+<form Align=center #imageForm=ngForm (ngSubmit)="onUpload()">
+  <div >
+    <img [src] = "imageUrl" style="height:100px;width:100px;">
+    <input type="file" #Image accept="image/*" (change)="onFileChanged($event.target.files)">
+    <button type="submit" class="btn btn-success" [disabled] ="Image.value==''||!imageForm.valid||fileUpload==null">Upload</button>
+  </div>
+</form>
+
+
+
+
+<!-- <input 
+  style="display: none" 
+  type="file" (change)="onFileChanged($event)" 
+  #fileInput>
+ <img [src] = "imageUrl" style="height:200px;width:500px;">
+ 
+<button (click)="fileInput.click()">Select File</button>
+<button (click)="onUpload()">Upload!</button> -->
+
+
+<br>
+<div Align=center>
+  <input type="text" [(ngModel)]=searchuser (keyup)="searchUser(searchuser)" placeholder="Search">
+  <button disabled = "false" class='btn btn-dark' (click)="searchUser(searchuser)" ><i class="material-icons">search</i></button>
+</div><br>
+
+
+
+<div Align=center>
+    <div *ngIf="selectedUser">
+        <div>
+          <label>&nbsp;ID: <input type="text" [(ngModel)]="selectedUser.id" disabled="false" placeholder="ID"> </label>
+          <!-- <label>Username: <input type="text" *ngIf="validUser" style="background-color:" [(ngModel)]="selectedUser.user" placeholder="Username"> </label> -->
+          <label>&nbsp;Username: <input type="text" [(ngModel)]="selectedUser.user" placeholder="Username"> </label>
+          <!-- <label>Username: <input type="text" *ngIf="!checkContact()" style="background-color:red" [(ngModel)]="selectedUser.user" placeholder="Username"> </label> -->
+          <label>&nbsp;Password: <input type="password"    [(ngModel)]="selectedUser.pass" placeholder="Password"> </label>&nbsp;
+          <button style="width:64px" class='btn btn-success' (click)="addUser(selectedUser)"> Add </button>
+          <button style="width:64px" class='btn btn-primary' (click)="updateUser(selectedUser)"> Save </button>
+          <button style="width:64px" class='btn btn-danger' (click)="deleteUser(selectedUser)"> Delete </button>
+          <button style="width:64px" class='btn btn-warning' (click)="clearContact()"> Clear </button>
+        </div>
+      </div>
+      <br>
+    <table id='customers1' border='2'>
+        <tr>
+          <th >ID </th>
+          <th >Username</th>
+          <th >Password</th>
+        </tr>
+        <tr *ngFor="let user of allUser" [class.selected]="all === selectedUser" (click)="onSelect(user)" >
+          <td>{{user.id}}</td>
+          <td>{{user.user}}</td>
+          <td>{{user.pass}}</td>
+        </tr>
+      </table>
+</div>
+
+</body>
+
+<div class="content-section implementation">
+    <!-- <p-growl [value]="selectedUser"></p-growl> -->
+
+<p-carousel headerText="Profile" [value]="allUser">
+  <ng-template let-user pTemplate="item">
+      <div class="ui-grid ui-grid-responsive">
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-12"><img src="http://localhost:8080/loadImage?id={{user.id}}" width="60"></div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-6">ID : {{user.id}}</div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-6">Username : {{user.user}}</div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-6">Password : {{user.pass}}</div>
+          </div>
+          <div class="ui-grid-row">
+              <div class="ui-grid-col-12">
+                  <button type="button" (click)="onSelect(user)"></button>
+              </div>
+          </div>
+      </div>
+  </ng-template>
+</p-carousel>
+</div>
+    
+    

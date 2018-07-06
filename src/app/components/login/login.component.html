@@ -1,0 +1,88 @@
+<!-- อันล่าสุด -->
+<br>
+<br>
+<br>
+<h1 Align=center>Login</h1>
+<br>
+<form Align="center" (ngSubmit)="onSubmit(user.user,user.pass)" #userLogin="ngForm" >
+  <div Align=center>
+    <label>Username:
+        <input type="text" required [(ngModel)]="user.user" name="user" #user="ngModel" placeholder="Username">
+        <div [hidden]="user.valid || user.pristine" class="alert alert-danger">
+          Username is required
+        </div>
+    </label>
+    <br>
+    <br>
+    <label>Password:
+        <input type="text" required [(ngModel)]="user.pass" name="pass" #pass="ngModel" placeholder="Password">
+        <!-- <input type="text" id="pass"  class="form-control" required [(ngModel)]="user.pass" name="pass" #pass="ngModel"> -->
+        <div [hidden]="pass.valid || pass.pristine" class="alert alert-danger">
+          Password is required
+        </div>
+    </label>
+    <br>
+    <br>
+    <button style="width:100px" type="submit" class="btn btn-primary" [disabled]="!userLogin.form.valid">Login</button>
+    <button style="width:100px" class='btn btn-success' (click)="register()">Register</button>
+  </div>
+</form>
+<!-- อันล่าสุดข้างบน -->
+
+
+
+<!-- <br>
+<br>
+<h1 Align="center">Login</h1>
+<br>
+<br>
+<form Align="center" (ngSubmit)="onSubmit(user.user,user.pass)" #userLogin="ngForm" >
+  <div class="form-group" style="width:20%" >
+    <label>Username</label>
+    <input type="text" class="form-control" id="user" required [(ngModel)]="user.user" name="user" #user="ngModel">
+    <div  [hidden]="user.valid || user.pristine" class="alert alert-danger">
+      Username is required
+    </div>
+  </div>
+  <div class="form-group" style="width:20%" >
+      <label>Password</label>
+      <input type="text" class="form-control" id="pass" required [(ngModel)]="user.pass" name="pass" #pass="ngModel">
+      <div [hidden]="pass.valid || pass.pristine" class="alert alert-danger">
+        Password is required
+      </div>
+    </div>
+  <button type="submit" class="btn btn-success" [disabled]="!userLogin.form.valid">Submit</button>
+</form> -->
+
+
+
+<!-- อันล่าสุด -->
+<!-- <br>
+<br>
+<br>
+<h1 Align=center>Login</h1>
+<br>
+<br>
+<form Align="center" (ngSubmit)="onSubmit(user.user,user.pass)" #userLogin="ngForm" >
+  <div Align=center>
+    <label>Username:
+      <input type="text"  [(ngModel)]="user.user" placeholder="Username">
+    </label>
+    <br>
+    <br>
+    <label>Password:
+      <input type="password" [(ngModel)]="user.pass" placeholder="Password">
+    </label>
+    <br>
+    <br>
+    <br>
+    <button style="width:7%" class='btn btn-primary' (click)="login(user)">Login</button>
+    <button style="width:7%" class='btn btn-success' (click)="register()">Register</button>
+  </div>
+</form> -->
+<!-- อันล่าสุดข้างบน -->
+
+<!-- {{user.user}}
+<br>{{user.pass}}
+<br> {{chkuser}}
+<br>{{chkpass}} -->

@@ -1,0 +1,12 @@
+<div Align=center><br><br><br>
+    <H1>Register</H1><br><br>
+    <label>Username:
+        <input type="text" [(ngModel)]="user.user" placeholder="Username">
+    </label>
+    <br><br>
+    <label>Password:
+        <input type="password" [(ngModel)]="user.pass" placeholder="Password">
+    </label><br><br><br>
+    <button style="width:7%" class='btn btn-success' (click)="addUser(user)">Add</button>
+    <button style="width:7%" class='btn btn-danger' (click)="Back()">Back</button>
+</div>
